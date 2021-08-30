@@ -1,0 +1,66 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-button  (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="nombre-modulo">Sistema</h1>
+        <span class="spacer"></span>
+        <mat-icon class="icon-toolbar">person</mat-icon>
+        <h1>Rommel</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+                <ng-container *ngFor="let navMenu of listaMenuAcceder">
+                    <ng-container [ngTemplateOutlet]="navMenu.listaHijo? modulo: menu"
+                        [ngTemplateOutletContext]="{navMenu: navMenu}">
+                    </ng-container>
+                </ng-container>
+
+            </mat-nav-list>
+            <mat-nav-list>
+                <mat-divider></mat-divider>
+
+                <a mat-list-item (click)="cerrarSesion()">
+                    <mat-icon class="iconoMenu">exit_to_app</mat-icon>
+                    Cerrar sesión
+                </a>
+            </mat-nav-list>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content id="image">
+            <router-outlet *ngIf="permisoCargado"></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+
+    <ng-template #modulo let-navMenu='navMenu'>
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon class="iconoMenu">{{navMenu.icono}}</mat-icon>
+                    {{navMenu.nombre}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let navMenuHijo of navMenu.listaHijo">
+                <ng-container style="padding-left: 40px !important;"
+                    [ngTemplateOutlet]="navMenuHijo.listaHijo? modulo: menu"
+                    [ngTemplateOutletContext]="{navMenu: navMenuHijo}">
+                </ng-container>
+            </ng-container>
+        </mat-expansion-panel>
+    </ng-template>
+
+    <ng-template #menu let-navMenu='navMenu'>
+        <a mat-list-item routerLink={{navMenu.url}} [ngClass]="navMenu.class">
+            <mat-icon class="iconoMenu">{{navMenu.icono}}</mat-icon>
+            {{navMenu.nombre}}
+        </a>
+    </ng-template>
+
+
+</div>

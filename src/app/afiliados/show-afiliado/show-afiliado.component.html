@@ -1,0 +1,151 @@
+
+<!-- 
+<button type="button" class="btn btn-primary float-right m-2" 
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Department
+  </button>
+  
+ Modal 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" 
+          data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-afiliado [afiliado]="afiliado" ngFor="ActivateAddEditAfiliadoComponent">
+            </app-add-edit-afiliado>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+<!--
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id Afiliado</th>
+            <th>Id Referente</th>
+            <th>Nombre Afiliado</th>
+            <th>Apellido Afiliado</th>
+            <th>Celular</th>
+            <th>Telefono Fijo</th>
+            <th>Correo electronico</th>
+            <th>Cedula</th>
+            <th>Dirección 1</th>
+            <th>Dirección 2</th>
+            <th>fecha_inscripcion</th>           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of AfiliadoList">
+            <td>{{dataItem.IDAReferente}}</td>    
+            <td>{{dataItem.IDAfiliado}}</td>
+            <td>{{dataItem.Nombre_del_Afiliado}}</td>
+            <td>{{dataItem.Apellido_del_Afiliado}}</td>
+            <td>{{dataItem.Celular}}</td>    
+            <td>{{dataItem.Telefono_Domicilio}}</td>    
+            <td>{{dataItem.Correo_Electronico}}</td>        
+            <td>{{dataItem.Cedula}}</td>                      
+            <td>{{dataItem.Direccion_1}}</td>
+            <td>{{dataItem.Direccion_2}}</td>
+            <td>{{dataItem.fecha_inscripcion}}</td>       
+            <td>
+                <button type="button" class="btn btn-light mr-1">
+                    Editar
+                </button>
+                <button type="button" class="btn btn-light mr-1">
+                    Eliminar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->
+
+<table mat-table [dataSource]="listaAfiliado" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Id Afiliado">
+    <th class="w-75" mat-header-cell *matHeaderCellDef>Id Afiliado</th>
+    <td mat-cell *matCellDef="let element"> {{element.IdAfiliado}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Id Referente">
+    <th class="w-75" mat-header-cell *matHeaderCellDef> Id Referente </th>
+    <td mat-cell *matCellDef="let element"> {{element.IdReferente}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Nombre Afiliado">
+    <th class="w-100" mat-header-cell *matHeaderCellDef> Nombre Afiliado </th>
+    <td mat-cell *matCellDef="let element"> {{element.NombreAfiliado}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Apellido Afiliado">
+    <th class="w-100" mat-header-cell *matHeaderCellDef> Apellido Afiliado </th>
+    <td mat-cell *matCellDef="let element"> {{element.ApellidoAfiliado}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Celular">
+    <th class="w-75" mat-header-cell *matHeaderCellDef> Celular </th>
+    <td mat-cell *matCellDef="let element"> {{element.Celular}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Telefono Fijo">
+    <th class="w-75" mat-header-cell *matHeaderCellDef>Telefono Fijo </th>
+    <td mat-cell *matCellDef="let element"> {{element.TelefonoDomicilio}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Correo electronico">
+    <th class="w-100" mat-header-cell *matHeaderCellDef> Correo electronico </th>
+    <td mat-cell *matCellDef="let element"> {{element.CorreoElectronico}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Cedula">
+    <th class="w-175" mat-header-cell *matHeaderCellDef> Cedula </th>
+    <td mat-cell *matCellDef="let element"> {{element.Cedula}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Dirección 1">
+    <th class="w-100" mat-header-cell *matHeaderCellDef> Dirección 1 </th>
+    <td mat-cell *matCellDef="let element"> {{element.Direccion1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Dirección 2">
+    <th class="w-100" mat-header-cell *matHeaderCellDef> Dirección 2 </th>
+    <td mat-cell *matCellDef="let element"> {{element.Direccion2}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha_inscripcion">
+    <th class="w-75" mat-header-cell *matHeaderCellDef> fecha_inscripcion </th>
+    <td mat-cell *matCellDef="let element"> {{element.FechaInscripcion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estado">
+    <th class="w-75" mat-header-cell *matHeaderCellDef> Estado </th>
+    <td mat-cell *matCellDef="let element"> {{element.Estatus}} </td>
+  </ng-container>Cargo
+
+  <ng-container matColumnDef="Cargo">
+    <th class="w-75" mat-header-cell *matHeaderCellDef> Cargo </th>
+    <td mat-cell *matCellDef="let element"> {{element.Cargo}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
