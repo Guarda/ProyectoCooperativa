@@ -8,6 +8,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 const BASE_MODULES: any = [
@@ -18,7 +20,10 @@ const BASE_MODULES: any = [
     MatExpansionModule,
     MatDividerModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule,
+    MatFormFieldModule
+
 ];
 
 const COMPONENT: any = [

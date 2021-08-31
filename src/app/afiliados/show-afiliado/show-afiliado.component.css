@@ -9,3 +9,11 @@
 .w-175{
     width: 175px;
 }
+.mat-elevation-z8 {    
+    overflow-x: auto;
+   }
+
+.mat-success {
+    background-color: green;
+    color: #fff;
+}  
