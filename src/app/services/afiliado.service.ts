@@ -1,24 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment'
-import { Respuesta } from '../@core/model/Respuesta';
-import { map, catchError } from 'rxjs/operators';
+
 import { ErrorService } from './error.service';
+import { Respuesta } from '../@core/model/respuesta';
+import { environment } from '../../environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AfiliadoService {
+  private url = `${environment.APIUrl}/Afiliado`
 
-  private url  = `${environment.APIUrl}/afiliados`;
+  constructor(private http: HttpClient, private errorService: ErrorService) { }
 
-  constructor(
-    private http: HttpClient, 
-    private errorService: ErrorService
-    ) { }
-
-  get(): Observable<Respuesta> | any {
+  get(): Observable<Respuesta> {
     return this.http.get<Respuesta>(this.url).pipe(
       map(
         (result: Respuesta) => {
@@ -31,15 +29,151 @@ export class AfiliadoService {
     )
   }
 
-  addAfiliado(val: any) {
-    return this.http.post(this.url, val);
+  getById(idAfiliado: number): Observable<Respuesta> {
+    return this.http.get<Respuesta>(
+      `${this.url}/${idAfiliado}`
+    ).pipe(
+      map(
+        (result: Respuesta) => {
+          return result;
+        }
+      ),
+      catchError((error, data) => {
+        return this.errorService.handleError(error);
+      })
+    )
   }
 
-  updateAfiliado(val: any) {
-    return this.http.put(this.url, val);
+
+  validarNombreAfiliado(value: any, idAfiliado: number): Observable<Respuesta> {
+    const body = JSON.stringify({
+      NombreAfiliado: value,
+      IdAfiliado: idAfiliado
+    });
+
+    return this.http.post<Respuesta>(
+      `${this.url}/ValidarNombreAfiliado`,
+      body,
+      {
+        headers: new HttpHeaders().set('content-type', 'application/json')
+      }).pipe(
+        map((result: Respuesta) => {
+          return result;
+        }),
+        catchError(
+          (error) => {
+            return this.errorService.handleError(error);
+          })
+      );
+
   }
 
-  deleteAfiliado(val: any) {
-    return this.http.delete(`${this.url}/${val}`);
+
+  post(afiliado: any): Observable<Respuesta> {
+    const body = JSON.stringify(afiliado);
+
+    return this.http.post<Respuesta>(
+      this.url,
+      body,
+      {
+        headers: new HttpHeaders().set('content-type', 'application/json')
+      }).pipe(
+        map((result: Respuesta) => {
+          return result;
+        }),
+        catchError(
+          (error) => {
+            return this.errorService.handleError(error);
+          })
+      );
+  }
+
+  put(afiliado: any): Observable<Respuesta> {
+    const body = JSON.stringify(afiliado);
+
+    return this.http.put<Respuesta>(
+      this.url,
+      body,
+      {
+        headers: new HttpHeaders().set('content-type', 'application/json')
+      }).pipe(
+        map((result: Respuesta) => {
+          return result;
+        }),
+        catchError(
+          (error) => {
+            return this.errorService.handleError(error);
+          })
+      );
+  }
+
+  delete(idAfiliado: number): Observable<Respuesta> {
+    return this.http.delete<Respuesta>(
+      `${this.url}/${idAfiliado}`
+    ).pipe(
+      map(
+        (result: Respuesta) => {
+          return result;
+        }
+      ),
+      catchError((error, data) => {
+        return this.errorService.handleError(error);
+      })
+    )
+  }
+
+
+  datatable(
+    filter: string,
+    sortActive: string,
+    sortOrder: string,
+    pageNumber: number,
+    pageSize: number
+  ): Observable<Respuesta> {
+
+    return this.http.get<Respuesta>(
+      `${this.url}/DataTable`,
+      {
+        params: new HttpParams()
+          .set('filter', filter)
+          .set('sortActive', sortActive)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber.toString())
+          .set('pageSize', pageSize.toString())
+      }
+    ).pipe(
+      map(
+        (result: Respuesta) => {
+          return result;
+        }
+      ),
+      catchError((error, data) => {
+        return this.errorService.handleError(error);
+      })
+    )
+  }
+
+  validarIniciales(value: any, idAfiliado: number) {
+    const body = JSON.stringify({
+      Iniciales: value,
+      IdAfiliado: idAfiliado
+    });
+
+    return this.http.post<Respuesta>(
+      `${this.url}/ValidarCodigoSISGO`,
+      body,
+      {
+        headers: new HttpHeaders().set('content-type', 'application/json')
+      }).pipe(
+
+
+map((result: Respuesta) => {
+          return result;
+        }),
+        catchError(
+          (error) => {
+            return this.errorService.handleError(error);
+          })
+      );
   }
 }

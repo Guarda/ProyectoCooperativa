@@ -1,0 +1,39 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Cooperativa 2021</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <p>The time is {{today | date:'h:mm a'}}</p>
+</mat-toolbar>
+<mat-card class="login-background-card">
+    <mat-card class="login-form-card">
+        <div class="login-form-div">
+            <mat-icon>perm_identity</mat-icon>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+            <mat-card-content class="login-form-content">
+                <mat-form-field appearance="standard">
+                    <mat-label>Nombre de usuario</mat-label>
+                    <input matInput placeholder="Ingrese nombre de usuario" [formControl]="nombreUsuarioControl">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput placeholder="Ingrese su contraseña" [formControl]="contrasenaUsuarioControl">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions class="login-form-action">
+                <button type="submit" mat-raised-button color="primary">LOGIN</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</mat-card>

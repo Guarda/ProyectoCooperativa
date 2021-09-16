@@ -1,0 +1,51 @@
+.spacer {
+    margin: auto;
+}
+
+.login-background-card {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+    height: 100vh;
+}
+
+.login-form-card{
+    width: 30vw;
+    height: 60vh;
+    margin: auto;
+}
+
+// .login-form-card-icon{
+//     height: 20vh;
+//     width: 20vh;
+//     font-size: 20vh;
+//     margin: auto;
+// }
+
+.login-form-div{
+    display: flex;
+    mat-icon{
+        height: 20vh;
+        width: 20vh;
+        font-size: 20vh;
+        margin: auto;
+    }
+}
+
+.login-form-content{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    mat-form-field{
+        margin: auto;
+        width: 80%;
+    }
+}
+
+.login-form-action{
+    display: flex;
+    button{
+        margin: auto !important;
+        width: 80%;
+    }
+}

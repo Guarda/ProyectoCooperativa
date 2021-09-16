@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { Injectable } from "@angular/core";
 import { throwError } from 'rxjs';
-import { Respuesta } from '../@core/model/Respuesta';
+import { Respuesta } from '../@core/model/respuesta';
 import { CodigoRespuesta } from '../@core/enumerable/codigo-respuesta.enumerable';
 
 @Injectable({

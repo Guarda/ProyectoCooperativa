@@ -10,7 +10,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSortModule } from "@angular/material/sort";
 
 const BASE_MODULES: any = [
     MatIconModule,
@@ -22,8 +27,13 @@ const BASE_MODULES: any = [
     MatListModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatFormFieldModule
-
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatSortModule
 ];
 
 const COMPONENT: any = [

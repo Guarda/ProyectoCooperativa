@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import {AfiliadosComponent} from './afiliados/afiliados.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  {path:'afiliados',component:AfiliadosComponent}
+  {path:'login',component:LoginComponent},
+  {
+    path: 'page',
+    loadChildren: () => import('./page/page.module').then(m => m.PageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

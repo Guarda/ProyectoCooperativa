@@ -1,2 +1,30 @@
-<app-show-afiliado>
-</app-show-afiliado>
+<mat-progress-bar *ngIf="cargandoLista" color="accent" mode="indeterminate" style="position:fixed; z-index: 100;">
+</mat-progress-bar>
+
+<div class="contenedor">
+    <mat-toolbar class="toolbar-lista">
+        <mat-toolbar-row>
+            <span> Afiliados </span>
+            <span class="spacer"></span>
+
+            <mat-form-field class="input-busqueda-lista" mat-form-field>
+                <input #txtBusqueda matInput placeholder="Buscar">
+            </mat-form-field>
+
+            <button (click)="nuevo()" mat-raised-button class="button-web">
+                <mat-icon>add_circle</mat-icon>
+                Nuevo
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <app-afiliado-lista (editarEmitter)="editar($event)"
+        (eliminarEmitter)="eliminar($event)">
+    </app-afiliado-lista>
+
+</div>
+
+<button (click)="nuevo()" class="fab-fixed" mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+</button>

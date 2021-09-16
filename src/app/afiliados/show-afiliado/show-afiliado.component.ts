@@ -50,10 +50,8 @@ export class ShowAfiliadoComponent implements OnInit {
 
   async cargarLista(){
     const resultado = await this.service.get().toPromise();
-
-    console.log(resultado.Dato);
     console.log(resultado.dato);
-    this.listaAfiliado = resultado.Dato;
+    this.listaAfiliado = resultado.dato;
   }
 
   ngOnInit(): void {
