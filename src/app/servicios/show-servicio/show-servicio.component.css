@@ -1,0 +1,19 @@
+.w-75{
+    width: 75px;
+}
+
+.w-100{
+    width: 100px;
+}
+
+.w-175{
+    width: 175px;
+}
+.mat-elevation-z8 {    
+    overflow-x: auto;
+   }
+
+.mat-success {
+    background-color: green;
+    color: #fff;
+}  

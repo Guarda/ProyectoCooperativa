@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AfiliadoComponent } from '../afiliados/afiliados.component';
+import { ServicioComponent } from '../servicios/servicio.component';
 import { PageComponent } from './page.component';
 
 
@@ -16,7 +17,15 @@ const routes: Routes = [
         redirectTo: 'afiliados',
         pathMatch: 'full'
       },
-    ]
+      { path: 'servicio', component: ServicioComponent },
+      {
+        path: '',
+        redirectTo: 'servicio',
+        pathMatch: 'full'
+      },
+    ],
+    
+    
   }
 ];
 

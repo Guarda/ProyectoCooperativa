@@ -29,33 +29,39 @@ export class SideNavComponent implements OnDestroy, OnInit, AfterViewInit {
       "listaHijo": [
         {
           "url": "/afiliados",
-          "nombre": "Filtrar todos los afiliados",
+          "nombre": "Listar todos los afiliados",
           "permiso": "ACCEDER_ROL",
           "icono": "supervisor_account"
         },
         {
           "url": "/Sistema/Usuario",
-          "nombre": "Filtrar todos los Agentes",
+          "nombre": "Listar todos los Agentes",
           "permiso": "ACCEDER_USUARIO",
           "icono": "verified_user"
         },
         {
           "url": "/Sistema/Usuario",
-          "nombre": "Mis afiliados",
+          "nombre": "Afiliados que no tienen asignado agente",
           "permiso": "ACCEDER_USUARIO",
           "icono": "person_pin_circle"
         },
         {
           "url": "/Sistema/Usuario",
-          "nombre": "Registrar pagos",
+          "nombre": "Listar Carteras de agentes",
           "permiso": "ACCEDER_USUARIO",
           "icono": "attach_money"
         },
         {
           "url": "/Sistema/Usuario",
+          "nombre": "Mis Afiliados",
+          "permiso": "ACCEDER_USUARIO",
+          "icono": "assignment_ind"
+        },
+        {
+          "url": "/Sistema/Usuario",
           "nombre": "Actualizar información personal",
           "permiso": "ACCEDER_USUARIO",
-          "icono": "account_box"
+          "icono": "mode_edit"
         },
         {
           "url": "/Sistema/Usuario",
@@ -70,20 +76,44 @@ export class SideNavComponent implements OnDestroy, OnInit, AfterViewInit {
       "icono": "monetization_on",
       "listaHijo": [
         {
-          "url": "/Sistema/SocioNegocio",
+          "url": "/servicio",
           "nombre": "Listar todos los servicios",
           "permiso": "ACCEDER_SOCIO_NEGOCIO",
           "icono": "work"
         },
         {
-          "url": "/Sistema/Cliente",
+          "url": "/servicio",
           "nombre": "Contratos",
           "permiso": "ACCEDER_CLIENTE",
           "icono": "list_alt"
 
         },
         {
-          "url": "/Sistema/HistorialContactenos",
+          "url": "/servicio",
+          "nombre": "Estados de cuenta de afiliados",
+          "permiso": "ACCEDER_CLIENTE",
+          "icono": "payment"
+        },
+        {
+          "url": "/servicio",
+          "nombre": "Registrar pagos",
+          "permiso": "ACCEDER_CLIENTE",
+          "icono": "payments"
+        },
+        {
+          "url": "/servicio",
+          "nombre": "Cuenta Personal",
+          "permiso": "ACCEDER_CLIENTE",
+          "icono": "savings"
+        },
+        {
+          "url": "/servicio",
+          "nombre": "Comisiones por inscripción",
+          "permiso": "ACCEDER_CLIENTE",
+          "icono": "attribution"
+        },
+        {
+          "url": "/servicio",
           "nombre": "Mis contratos",
           "permiso": "ACCEDER_HISTORIAL_CONTACTENOS",
           "icono": "history"

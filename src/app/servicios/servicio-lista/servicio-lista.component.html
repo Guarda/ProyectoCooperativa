@@ -1,0 +1,49 @@
+<div class="table-spinner-container">
+    <div class="spinner-loading-shade" *ngIf="dataSource.cargandoRegistro | async">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort matSortDirection="asc" matSortDisableClear>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+
+        <ng-container matColumnDef="idServicio">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="No:"> {{servicio.idServicio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nombreServicio">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="Nombre:"> {{servicio.nombreServicio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="apellidoServicio">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Apellido </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="Apellido:"> {{servicio.apellidoServicio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+            <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+            <mat-cell *matCellDef="let servicio">
+
+                <button mat-icon-button (click)="editar(servicio.idServicio)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button (click)="eliminar(servicio.idServicio)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+            </mat-cell>
+        </ng-container>
+
+    </mat-table>
+
+    <mat-paginator style="margin-top: 20px;" [pageSize]="10" [length]="dataSource.cantidadRegistro | async"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+</div>

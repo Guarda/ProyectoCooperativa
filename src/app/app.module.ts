@@ -20,6 +20,11 @@ import { PageComponent } from './page/page.component';
 import { PageModule } from './page/page.module';
 import { AfiliadoListaComponent } from './afiliados/afiliado-lista/afiliado-lista.component';
 import { AfiliadoFormularioComponent } from './afiliados/afiliado-formulario/afiliado-formulario.component';
+import { ServicioComponent } from './servicios/servicio.component';
+import { ServicioFormularioComponent } from './servicios/servicio-formulario/servicio-formulario.component';
+import { ServicioListaComponent } from './servicios/servicio-lista/servicio-lista.component';
+import { ShowServicioComponent } from './servicios/show-servicio/show-servicio.component';
+import { AddEditServicioComponent } from './servicios/add-edit-servicio/add-edit-servicio.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import { AfiliadoFormularioComponent } from './afiliados/afiliado-formulario/afi
     AddEditAfiliadoComponent,
     NavigationComponent,
     LoginComponent,
+    ServicioComponent,
+    AddEditServicioComponent,
+    ShowServicioComponent,
+    ServicioFormularioComponent,
+    ServicioListaComponent
   ],
   imports: [
     BrowserModule,

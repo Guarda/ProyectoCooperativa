@@ -1,0 +1,87 @@
+<div>
+
+  <div class="container">  
+    <app-add-edit-servicio>
+      
+    </app-add-edit-servicio>
+  <table mat-table [dataSource]="listaServicio" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id servicio">
+      <th class="w-75" mat-header-cell *matHeaderCellDef>Id servicio</th>
+      <td mat-cell *matCellDef="let element"> {{element.Idservicio}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Id Referente">
+      <th class="w-75" mat-header-cell *matHeaderCellDef> Id Referente </th>
+      <td mat-cell *matCellDef="let element"> {{element.IdReferente}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Nombre servicio">
+      <th class="w-100" mat-header-cell *matHeaderCellDef> Nombre servicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.Nombreservicio}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Apellido servicio">
+      <th class="w-100" mat-header-cell *matHeaderCellDef> Apellido servicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.Apellidoservicio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Celular">
+      <th class="w-75" mat-header-cell *matHeaderCellDef> Celular </th>
+      <td mat-cell *matCellDef="let element"> {{element.Celular}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Telefono Fijo">
+      <th class="w-75" mat-header-cell *matHeaderCellDef>Telefono Fijo </th>
+      <td mat-cell *matCellDef="let element"> {{element.TelefonoDomicilio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Correo electronico">
+      <th class="w-100" mat-header-cell *matHeaderCellDef> Correo electronico </th>
+      <td mat-cell *matCellDef="let element"> {{element.CorreoElectronico}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Cedula">
+      <th class="w-175" mat-header-cell *matHeaderCellDef> Cedula </th>
+      <td mat-cell *matCellDef="let element"> {{element.Cedula}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Dirección 1">
+      <th class="w-100" mat-header-cell *matHeaderCellDef> Dirección 1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Direccion1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Dirección 2">
+      <th class="w-100" mat-header-cell *matHeaderCellDef> Dirección 2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Direccion2}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha_inscripcion">
+      <th class="w-75" mat-header-cell *matHeaderCellDef> fecha_inscripcion </th>
+      <td mat-cell *matCellDef="let element"> {{element.FechaInscripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Estado">
+      <th class="w-75" mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element"> {{element.Estatus}} </td>
+    </ng-container>Cargo
+
+    <ng-container matColumnDef="Cargo">
+      <th class="w-75" mat-header-cell *matHeaderCellDef> Cargo </th>
+      <td mat-cell *matCellDef="let element"> {{element.Cargo}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{accion}} socio de negocios</h1>
+
+<form [formGroup]="servicioForm" autocomplete="off" focusInvalidInput (ngSubmit)="onSubmit(servicioForm.value)">
+    <div mat-dialog-content>
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="Nombre" matInput placeholder="Nombre (*)" cdkFocusInitial>
+
+                <mat-error *ngIf="servicioForm.controls['Nombre'].invalid">
+                    {{obtenerMensajeError(servicioForm.controls['Nombre'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="Abreviacion" matInput placeholder="Abreviación (*)">
+                <mat-error *ngIf="servicioForm.controls['Abreviacion'].invalid">
+                    {{obtenerMensajeError(servicioForm.controls['Abreviacion'])}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input
+                    matTooltip="Código heredado si el cliente va a utilizar el API de CargoTrans S.A. para crear subclientes (Se puede dejar en blanco)."
+                    formControlName="CodigoCliente" matInput placeholder="Código de cliente heredado (API)">
+
+                <mat-error *ngIf="servicioForm.controls['CodigoCliente'].invalid">
+                    {{obtenerMensajeError(servicioForm.controls['CodigoCliente'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <section class="checkbox-section">
+                <mat-checkbox formControlName="MostrarEtiqueta" class="default-margin">
+                    Vista previa de etiquetas
+                </mat-checkbox>
+
+                <mat-checkbox formControlName="PermitirPeso" class="default-margin">
+                    Permitir pesos
+                </mat-checkbox>
+
+                <mat-checkbox formControlName="AgruparRemisionDetalle" class="default-margin">
+                    Agrupar detalles de remisión
+                </mat-checkbox>
+            </section>
+        </div>
+
+    </div>
+
+    <div mat-dialog-actions>
+        <button type="button" (click)="closeDialog()" mat-button>Cerrar</button>
+        <button type="submit" mat-button cdkFocusInitial>Guardar</button>
+    </div>
+</form>
