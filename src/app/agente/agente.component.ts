@@ -6,6 +6,7 @@ import { ConfirmacionComponent } from '../@core/confirmacion/confirmacion.compon
 import { AgenteService } from '../services/agente.service';
 import { MensajeService } from '../services/mensaje.service';
 import { AgenteFormularioComponent } from './agente-formulario/agente-formulario.component';
+import { AgenteContratoFormularioComponent } from './agente-contrato-formulario/agente-formulario/agente-contrato-formulario.component';
 import { AgenteListaComponent } from './agente-lista/agente-lista.component';
 
 @Component({
@@ -74,7 +75,7 @@ export class AgenteComponent implements OnInit {
   }
 
   nuevo() {
-    const dialogRef = this.dialog.open(AgenteFormularioComponent, {
+    const dialogRef = this.dialog.open(AgenteContratoFormularioComponent, {
       data: {}
     });
 

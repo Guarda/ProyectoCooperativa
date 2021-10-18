@@ -1,21 +1,21 @@
 import { Observable } from 'rxjs';
-import { AgenteService } from './../../services/agente.service';
-import { CodigoRespuesta } from './../../@core/enumerable/codigo-respuesta.enumerable';
-import { MensajeService } from './../../services/mensaje.service';
+import { AgenteService } from '../../../services/agente.service';
+import { CodigoRespuesta } from '../../../@core/enumerable/codigo-respuesta.enumerable';
+import { MensajeService } from '../../../services/mensaje.service';
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-agente-formulario',
-  templateUrl: './agente-formulario.component.html',
-  styleUrls: ['./agente-formulario.component.scss']
+  selector: 'app-agente-contrato-formulario',
+  templateUrl: './agente-contrato-formulario.component.html',
+  styleUrls: ['./agente-contrato-formulario.component.scss']
 })
-export class AgenteFormularioComponent {
+export class AgenteContratoFormularioComponent {
   public accion: string
-  public listaEstadoAgente: any;
-  public listaAgente: any;
+  public listaEstadoAgenteContrato: any;
+  public listaAgenteContrato: any;
   public agenteForm: any;
   private idAgente: number;
   public lista: any;
@@ -23,15 +23,15 @@ export class AgenteFormularioComponent {
   public listaModulo: any;
 
   constructor(
-    public dialogRef: MatDialogRef<AgenteFormularioComponent>,
+    public dialogRef: MatDialogRef<AgenteContratoFormularioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private service: AgenteService,
     private formBuilder: FormBuilder,
     private mensajeService: MensajeService,
   ) {
 
-    this.listaEstadoAgente = [];
-    this.listaAgente = [];
+    this.listaEstadoAgenteContrato = [];
+    this.listaAgenteContrato = [];
     this.accion = 'Nuevo';
     this.idAgente = null;
     this.lista = [];
@@ -141,13 +141,13 @@ export class AgenteFormularioComponent {
   async obtenerInformacion() {
     if (this.data.idAgente) {
       this.idAgente = this.data.idAgente;
-      this.obtenerAgente();
+      this.obtenerAgenteContrato();
     } else {
       this.agenteForm.enable();
     }
   }
 
-  private async obtenerAgente() {
+  private async obtenerAgenteContrato() {
     this.accion = 'Editar';
     // comprobar que traiga datos
     const resultado = await this.service.getById(this.idAgente).toPromise();
@@ -188,7 +188,7 @@ export class AgenteFormularioComponent {
 
 
       // Se crea un modelo por si quiere hacerse algun cambio
-      const modAgente = {
+      const modAgenteContrato = {
         IdAgente: formulario.IdAgente,
         NombreAgente: formulario.NombreAgente,
         ApellidoAgente: formulario.ApellidoAgente,
@@ -209,9 +209,9 @@ export class AgenteFormularioComponent {
       let resultado;
 
       if (!this.idAgente)
-        resultado = await this.service.post(modAgente).toPromise();
+        resultado = await this.service.post(modAgenteContrato).toPromise();
       else {
-        resultado = await this.service.put(modAgente).toPromise();
+        resultado = await this.service.put(modAgenteContrato).toPromise();
       }
 
       this.mensajeService.generarToastr(resultado.exito, '', resultado.mensaje);
