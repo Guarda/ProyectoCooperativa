@@ -9,9 +9,9 @@ import { ServicioFormularioComponent } from './servicio-formulario/servicio-form
 import { ServicioListaComponent } from './servicio-lista/servicio-lista.component';
 
 @Component({
-  selector: 'app-Servicio',
-  templateUrl: './Servicio.component.html',
-  styleUrls: ['./Servicio.component.css']
+  selector: 'app-servicio',
+  templateUrl: './servicio.component.html',
+  styleUrls: ['./servicio.component.css']
 })
 export class ServicioComponent implements OnInit {
 
@@ -31,7 +31,6 @@ export class ServicioComponent implements OnInit {
   }
 
   ngOnInit() {
-
     fromEvent(this.input.nativeElement, 'keyup')
       .pipe(
         debounceTime(400),
@@ -43,10 +42,10 @@ export class ServicioComponent implements OnInit {
       .subscribe();
   }
 
-  public editar(idServicio) {
+  public editar(IdServicio) {
     const dialogRef = this.dialog.open(ServicioFormularioComponent, {
       data: {
-        idServicio
+        IdServicio
       }
     });
 
@@ -56,17 +55,17 @@ export class ServicioComponent implements OnInit {
   }
 
   
-  public eliminar(idServicio) {
+  public eliminar(IdServicio) {
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
       data: {
-        titulo: 'Eliminar socio de negocios',
+        titulo: 'Dar de baja Servicio',
         mensaje: '¿Esta seguro que desea realizar esta acción?'
       }
     });
 
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        const resultado = await this.service.delete(idServicio).toPromise();
+        const resultado = await this.service.delete(IdServicio).toPromise();
         this.mensajeService.generarToastr(resultado.exito, '', resultado.mensaje);
         this.lista.cargarLista();
       }

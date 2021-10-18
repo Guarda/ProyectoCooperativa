@@ -2,14 +2,14 @@ import { MensajeService } from './../services/mensaje.service';
 import { CodigoRespuesta } from './../@core/enumerable/codigo-respuesta.enumerable';
 import { Respuesta } from '../@core/model/respuesta';
 import { catchError, finalize } from 'rxjs/operators';
-import { ServicioService } from '../services/servicio.service';
+import { AgenteService } from './../services/agente.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { DataSource } from '@angular/cdk/table';
 import { CollectionViewer } from '@angular/cdk/collections';
 
-export class ServicioDataSource implements DataSource<any> {
+export class AgenteDataSource implements DataSource<any> {
 
-  private ServicioSubject = new BehaviorSubject<any>([]);
+  private agenteSubject = new BehaviorSubject<any>([]);
   private cantidadRegistroSubject = new BehaviorSubject<number>(0);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -17,22 +17,22 @@ export class ServicioDataSource implements DataSource<any> {
   public cantidadRegistro = this.cantidadRegistroSubject.asObservable();
 
   constructor(
-    private service: ServicioService,
+    private service: AgenteService,
     private mensajeService: MensajeService
   ) { }
 
   connect(
     collectionViewer: CollectionViewer
   ): Observable<any> {
-    return this.ServicioSubject.asObservable();
+    return this.agenteSubject.asObservable();
   }
 
   disconnect(collectionViewer: CollectionViewer): void {
-    this.ServicioSubject.complete();
+    this.agenteSubject.complete();
     this.loadingSubject.complete();
   }
 
-  loadServicio(
+  loadAgente(
     filter = '',
     sortActive = '',
     sortDirection = 'asc',
@@ -48,10 +48,10 @@ export class ServicioDataSource implements DataSource<any> {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe((resultado: Respuesta) => {
-        console.log(resultado);
+console.log(resultado);
         if (resultado.exito === CodigoRespuesta.Exito) {
           this.cantidadRegistroSubject.next(resultado.dato.cantidadRegistro)
-          this.ServicioSubject.next(resultado.dato.lista)
+          this.agenteSubject.next(resultado.dato.lista)
         } else {
           this.mensajeService.generarToastr(resultado.exito, '', resultado.mensaje);
           this.loadingSubject.next(true);

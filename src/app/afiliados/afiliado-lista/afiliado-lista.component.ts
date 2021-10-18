@@ -25,7 +25,7 @@ export class AfiliadoListaComponent implements OnInit, AfterViewInit {
   @Output() editarAPIemitter;
 
 
-  displayedColumns = ['idAfiliado', 'nombreAfiliado', 'apellidoAfiliado', 'accion'];
+  displayedColumns = ['idAfiliado', 'nombreAfiliado', 'apellidoAfiliado', 'estado', 'accion'];
   dataSource: AfiliadoDataSource;
 
   constructor(

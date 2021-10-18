@@ -25,6 +25,9 @@ import { ServicioFormularioComponent } from './servicios/servicio-formulario/ser
 import { ServicioListaComponent } from './servicios/servicio-lista/servicio-lista.component';
 import { ShowServicioComponent } from './servicios/show-servicio/show-servicio.component';
 import { AddEditServicioComponent } from './servicios/add-edit-servicio/add-edit-servicio.component';
+import { AgenteComponent } from './agente/agente.component';
+import { AgenteFormularioComponent } from './agente/agente-formulario/agente-formulario.component';
+import { AgenteListaComponent } from './agente/agente-lista/agente-lista.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { AddEditServicioComponent } from './servicios/add-edit-servicio/add-edit
     AddEditServicioComponent,
     ShowServicioComponent,
     ServicioFormularioComponent,
-    ServicioListaComponent
+    ServicioListaComponent,
+    AgenteComponent,
+    AgenteFormularioComponent,
+    AgenteListaComponent
   ],
   imports: [
     BrowserModule,

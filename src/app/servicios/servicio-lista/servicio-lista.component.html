@@ -15,18 +15,42 @@
             <mat-cell *matCellDef="let servicio" data-label="No:"> {{servicio.idServicio}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="nombreServicio">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </mat-header-cell>
+            <!-- Aca debe de hacer el MATCH las columnas que estan en el TS con lo que se va a mostrar -->
+            <ng-container matColumnDef="nombreServicio">
+            <!-- Estos son los nombres de la columna -->
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Nombre Servicio </mat-header-cell>
+            <!-- Aca debe de hacer el MATCH las columnas que estan en el TS con lo que se va a mostrar -->
             <mat-cell *matCellDef="let servicio" data-label="Nombre:"> {{servicio.nombreServicio}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="apellidoServicio">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Apellido </mat-header-cell>
-            <mat-cell *matCellDef="let servicio" data-label="Apellido:"> {{servicio.apellidoServicio}} </mat-cell>
+        <ng-container matColumnDef="descripcionServicio">
+            <!-- Estos son los nombres de la columna -->
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="descripcionServicio"> {{servicio.descripcionServicio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+            <!-- Estos son los nombres de la columna -->
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="Precio:"> {{servicio.precio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="plazo">
+            <!-- Estos son los nombres de la columna -->
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Plazo </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="Plazo:"> {{servicio.plazo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+            <!-- Estos son los nombres de la columna -->
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Estado </mat-header-cell>
+            <mat-cell *matCellDef="let servicio" data-label="Estado:"> {{servicio.estado}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="accion">
+            <!-- Estos son los nombres de la columna -->
             <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+
             <mat-cell *matCellDef="let servicio">
 
                 <button mat-icon-button (click)="editar(servicio.idServicio)">

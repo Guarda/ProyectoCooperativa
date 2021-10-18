@@ -16,6 +16,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatSortModule } from "@angular/material/sort";
+import { MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MatOptionModule } from "@angular/material/core";
 
 const BASE_MODULES: any = [
     MatIconModule,
@@ -33,7 +36,11 @@ const BASE_MODULES: any = [
     MatDialogModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule, 
+    MatOptionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 ];
 
 const COMPONENT: any = [
@@ -53,7 +60,7 @@ const COMPONENT: any = [
 export class ThemeModule {
     static forRoot(): ModuleWithProviders {
         return <ModuleWithProviders>{
-            ngModule: ThemeModule
+           ngModule: ThemeModule
         };
     }
 }

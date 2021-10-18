@@ -34,7 +34,7 @@ export class SideNavComponent implements OnDestroy, OnInit, AfterViewInit {
           "icono": "supervisor_account"
         },
         {
-          "url": "/Sistema/Usuario",
+          "url": "/agente",
           "nombre": "Listar todos los Agentes",
           "permiso": "ACCEDER_USUARIO",
           "icono": "verified_user"

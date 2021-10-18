@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AfiliadoService } from './../../services/afiliado.service';
+import { AgenteService } from './../../services/agente.service';
 import { CodigoRespuesta } from './../../@core/enumerable/codigo-respuesta.enumerable';
 import { MensajeService } from './../../services/mensaje.service';
 import { Component, Inject, ViewChild } from '@angular/core';
@@ -8,49 +8,49 @@ import { FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors
 import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-afiliado-formulario',
-  templateUrl: './afiliado-formulario.component.html',
-  styleUrls: ['./afiliado-formulario.component.scss']
+  selector: 'app-agente-formulario',
+  templateUrl: './agente-formulario.component.html',
+  styleUrls: ['./agente-formulario.component.scss']
 })
-export class AfiliadoFormularioComponent {
+export class AgenteFormularioComponent {
   public accion: string
-  public listaEstadoAfiliado: any;
-  public listaAfiliado: any;
-  public afiliadoForm: any;
-  private idAfiliado: number;
+  public listaEstadoAgente: any;
+  public listaAgente: any;
+  public agenteForm: any;
+  private idAgente: number;
   public lista: any;
   public listaPermiso: any;
   public listaModulo: any;
 
   constructor(
-    public dialogRef: MatDialogRef<AfiliadoFormularioComponent>,
+    public dialogRef: MatDialogRef<AgenteFormularioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private service: AfiliadoService,
+    private service: AgenteService,
     private formBuilder: FormBuilder,
     private mensajeService: MensajeService,
   ) {
 
-    this.listaEstadoAfiliado = [];
-    this.listaAfiliado = [];
+    this.listaEstadoAgente = [];
+    this.listaAgente = [];
     this.accion = 'Nuevo';
-    this.idAfiliado = null;
+    this.idAgente = null;
     this.lista = [];
 
-    this.afiliadoForm = this.formBuilder.group({
-      IdAfiliado: [
+    this.agenteForm = this.formBuilder.group({
+      IdAgente: [
         null,
         Validators.compose([
           Validators.required,
         ]),
       ],
-      NombreAfiliado: [
+      NombreAgente: [
         null,
         Validators.compose([
           Validators.required,
           Validators.maxLength(300),
         ]),
       ],
-      ApellidoAfiliado: [
+      ApellidoAgente: [
         null,
         Validators.compose([
           Validators.required,
@@ -133,24 +133,24 @@ export class AfiliadoFormularioComponent {
   }
 
   async obtenerInformacion() {
-    if (this.data.idAfiliado) {
-      this.idAfiliado = this.data.idAfiliado;
-      this.obtenerAfiliado();
+    if (this.data.idAgente) {
+      this.idAgente = this.data.idAgente;
+      this.obtenerAgente();
     } else {
-      this.afiliadoForm.enable();
+      this.agenteForm.enable();
     }
   }
 
-  private async obtenerAfiliado() {
+  private async obtenerAgente() {
     this.accion = 'Editar';
     // comprobar que traiga datos
-    const resultado = await this.service.getById(this.idAfiliado).toPromise();
+    const resultado = await this.service.getById(this.idAgente).toPromise();
     console.log(resultado);   
     // Mapeas con los nombres de tu formulario
-    this.afiliadoForm.patchValue({
-      IdAfiliado : this.idAfiliado,
-      NombreAfiliado: resultado.dato.nombreAfiliado,
-      ApellidoAfiliado: resultado.dato.apellidoAfiliado,
+    this.agenteForm.patchValue({
+      IdAgente : this.idAgente,
+      NombreAgente: resultado.dato.nombreAgente,
+      ApellidoAgente: resultado.dato.apellidoAgente,
       IdReferente: resultado.dato.idReferente,
       Celular: resultado.dato.celular,
       TelefonoDomicilio: resultado.dato.telefonoDomicilio,
@@ -165,7 +165,7 @@ export class AfiliadoFormularioComponent {
       Contraseña : resultado.dato.contraseña
     });
 
-    this.afiliadoForm.enable();
+    this.agenteForm.enable();
   }
 
   closeDialog(): void {
@@ -176,16 +176,16 @@ export class AfiliadoFormularioComponent {
 
     console.log(formulario);
 
-    if (this.afiliadoForm.valid && this.afiliadoForm.enabled) {
+    if (this.agenteForm.valid && this.agenteForm.enabled) {
 
-      this.afiliadoForm.disable();
+      this.agenteForm.disable();
 
 
       // Se crea un modelo por si quiere hacerse algun cambio
-      const modAfiliado = {
-        IdAfiliado: formulario.IdAfiliado,
-        NombreAfiliado: formulario.NombreAfiliado,
-        ApellidoAfiliado: formulario.ApellidoAfiliado,
+      const modAgente = {
+        IdAgente: formulario.IdAgente,
+        NombreAgente: formulario.NombreAgente,
+        ApellidoAgente: formulario.ApellidoAgente,
         IdReferente: formulario.IdReferente,
         Celular: formulario.Celular,
         TelefonoDomicilio: formulario.TelefonoDomicilio,
@@ -202,10 +202,10 @@ export class AfiliadoFormularioComponent {
 
       let resultado;
 
-      if (!this.idAfiliado)
-        resultado = await this.service.post(modAfiliado).toPromise();
+      if (!this.idAgente)
+        resultado = await this.service.post(modAgente).toPromise();
       else {
-        resultado = await this.service.put(modAfiliado).toPromise();
+        resultado = await this.service.put(modAgente).toPromise();
       }
 
       this.mensajeService.generarToastr(resultado.exito, '', resultado.mensaje);
@@ -213,7 +213,7 @@ export class AfiliadoFormularioComponent {
       if (resultado.exito === CodigoRespuesta.Exito)
         this.dialogRef.close();
 
-      this.afiliadoForm.enable();
+      this.agenteForm.enable();
     }
   }
 

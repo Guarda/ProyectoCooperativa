@@ -4,7 +4,7 @@
 <div class="contenedor">
     <mat-toolbar class="toolbar-lista">
         <mat-toolbar-row>
-            <span> Servicios </span>
+            <span> Agentes </span>
             <span class="spacer"></span>
 
             <mat-form-field class="input-busqueda-lista" mat-form-field>
@@ -19,13 +19,12 @@
     </mat-toolbar>
 
 
-    <app-servicio-lista (editarEmitter)="editar($event)"
+    <app-agente-lista (editarEmitter)="editar($event)"
         (eliminarEmitter)="eliminar($event)">
-    </app-servicio-lista>
+    </app-agente-lista>
 
 </div>
 
 <button (click)="nuevo()" class="fab-fixed" mat-fab color="primary">
     <mat-icon>add</mat-icon>
 </button>
-

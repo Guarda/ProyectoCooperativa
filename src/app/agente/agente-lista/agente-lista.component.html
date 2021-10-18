@@ -10,36 +10,36 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
 
-        <ng-container matColumnDef="idAfiliado">
+        <ng-container matColumnDef="idAgente">
             <mat-header-cell mat-sort-header *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let afiliado" data-label="No:"> {{afiliado.idAfiliado}} </mat-cell>
+            <mat-cell *matCellDef="let agente" data-label="No:"> {{agente.idAgente}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="nombreAfiliado">
+        <ng-container matColumnDef="nombreAgente">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let afiliado" data-label="Nombre:"> {{afiliado.nombreAfiliado}} </mat-cell>
+            <mat-cell *matCellDef="let agente" data-label="Nombre:"> {{agente.nombreAgente}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="apellidoAfiliado">
+        <ng-container matColumnDef="apellidoAgente">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Apellido </mat-header-cell>
-            <mat-cell *matCellDef="let afiliado" data-label="Apellido:"> {{afiliado.apellidoAfiliado}} </mat-cell>
+            <mat-cell *matCellDef="let agente" data-label="Apellido:"> {{agente.apellidoAgente}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="estado">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let afiliado" data-label="Estado:"> {{afiliado.estado}} </mat-cell>
+            <mat-cell *matCellDef="let agente" data-label="Estado:"> {{agente.estado}} </mat-cell>
         </ng-container>
                
         
         <ng-container matColumnDef="accion">
             <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
-            <mat-cell *matCellDef="let afiliado">
+            <mat-cell *matCellDef="let agente">
 
-                <button mat-icon-button (click)="editar(afiliado.idAfiliado)">
+                <button mat-icon-button (click)="editar(agente.idAgente)">
                     <mat-icon>edit</mat-icon>
                 </button>
 
-                <button mat-icon-button (click)="eliminar(afiliado.idAfiliado)">
+                <button mat-icon-button (click)="eliminar(agente.idAgente)">
                     <mat-icon>delete</mat-icon>
                 </button>
 

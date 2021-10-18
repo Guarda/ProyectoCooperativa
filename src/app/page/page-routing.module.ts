@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AfiliadoComponent } from '../afiliados/afiliados.component';
+import { AgenteComponent } from '../agente/agente.component';
 import { ServicioComponent } from '../servicios/servicio.component';
 import { PageComponent } from './page.component';
 
@@ -21,6 +22,12 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'servicio',
+        pathMatch: 'full'
+      },
+      { path: 'agente', component: AgenteComponent },
+      {
+        path: '',
+        redirectTo: 'agente',
         pathMatch: 'full'
       },
     ],

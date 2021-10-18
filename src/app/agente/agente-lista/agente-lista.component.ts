@@ -1,6 +1,6 @@
 import { MensajeService } from './../../services/mensaje.service';
-import { ServicioDataSource } from './../../datasource/servicio.datasource';
-import { ServicioService } from './../../services/servicio.service';
+import { AgenteDataSource } from './../../datasource/agente.datasource';
+import { AgenteService } from './../../services/agente.service';
 import { Component, ViewChild, Output, EventEmitter, OnInit, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 
@@ -9,11 +9,11 @@ import { merge } from 'rxjs';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-servicio-lista',
-  templateUrl: './servicio-lista.component.html',
-  styleUrls: ['./servicio-lista.component.scss']
+  selector: 'app-agente-lista',
+  templateUrl: './agente-lista.component.html',
+  styleUrls: ['./agente-lista.component.scss']
 })
-export class ServicioListaComponent implements OnInit, AfterViewInit {
+export class AgenteListaComponent implements OnInit, AfterViewInit {
 
   public valor: string;
 
@@ -25,22 +25,23 @@ export class ServicioListaComponent implements OnInit, AfterViewInit {
   @Output() editarAPIemitter;
 
 
-  displayedColumns = ['idServicio', 'nombreServicio', 'descripcionServicio', 'precio','plazo','estado','accion']; // Esto es lo que retorna el API
-  dataSource: ServicioDataSource;
+  displayedColumns = ['idAgente', 'nombreAgente', 'apellidoAgente', 'estado', 'accion'];
+  dataSource: AgenteDataSource;
 
   constructor(
-    private service: ServicioService,
-    private mensajeService: MensajeService
+    private service: AgenteService,
+    private mensajeService: MensajeService,
   ) {
     this.editarEmitter = new EventEmitter();
     this.eliminarEmitter = new EventEmitter();
     this.editarAPIemitter = new EventEmitter();
+
     this.inicializarTabla();
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
+  ngOnInit() {
+ 
+  }
 
   public busqueda(valor: string) {
     this.valor = valor;
@@ -64,12 +65,12 @@ export class ServicioListaComponent implements OnInit, AfterViewInit {
   }
 
   inicializarTabla() {
-    this.dataSource = new ServicioDataSource(this.service, this.mensajeService);
-    this.dataSource.loadServicio();
+    this.dataSource = new AgenteDataSource(this.service, this.mensajeService);
+    this.dataSource.loadAgente();
   }
 
   public cargarLista() {
-    this.dataSource.loadServicio(
+    this.dataSource.loadAgente(
       this.valor,
       this.sort.active,
       this.sort.direction,
@@ -77,17 +78,17 @@ export class ServicioListaComponent implements OnInit, AfterViewInit {
       this.paginator.pageSize);
   }
 
-  editar(idServicio: number) {
-    this.editarEmitter.emit(idServicio);
+  editar(idAgente: number) {
+    this.editarEmitter.emit(idAgente);
   }
 
 
-  editarAPI(idServicio: number) {
-    this.editarAPIemitter.emit(idServicio);
+  editarAPI(idAgente: number) {
+    this.editarAPIemitter.emit(idAgente);
   }
 
-  eliminar(idServicio: number) {
-    this.eliminarEmitter.emit(idServicio);
+  eliminar(idAgente: number) {
+    this.eliminarEmitter.emit(idAgente);
   }
 
 }

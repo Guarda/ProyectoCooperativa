@@ -3,26 +3,26 @@ import { MatDialog } from '@angular/material/dialog';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { ConfirmacionComponent } from '../@core/confirmacion/confirmacion.component';
-import { AfiliadoService } from '../services/afiliado.service';
+import { AgenteService } from '../services/agente.service';
 import { MensajeService } from '../services/mensaje.service';
-import { AfiliadoFormularioComponent } from './afiliado-formulario/afiliado-formulario.component';
-import { AfiliadoListaComponent } from './afiliado-lista/afiliado-lista.component';
+import { AgenteFormularioComponent } from './agente-formulario/agente-formulario.component';
+import { AgenteListaComponent } from './agente-lista/agente-lista.component';
 
 @Component({
-  selector: 'app-afiliados',
-  templateUrl: './afiliados.component.html',
-  styleUrls: ['./afiliados.component.css']
+  selector: 'app-agente',
+  templateUrl: './agente.component.html',
+  styleUrls: ['./agente.component.css']
 })
-export class AfiliadoComponent implements OnInit {
+export class AgenteComponent implements OnInit {
 
   public cargandoLista: Boolean;
 
-  @ViewChild(AfiliadoListaComponent, { static: false }) lista: AfiliadoListaComponent;
+  @ViewChild(AgenteListaComponent, { static: false }) lista: AgenteListaComponent;
   @ViewChild('txtBusqueda', { static: true }) input: ElementRef;
 
 
   constructor(
-    private service: AfiliadoService,
+    private service: AgenteService,
     private dialog: MatDialog,
     private mensajeService: MensajeService,
     private changeDetectorRef: ChangeDetectorRef
@@ -43,10 +43,10 @@ export class AfiliadoComponent implements OnInit {
       .subscribe();
   }
 
-  public editar(idAfiliado) {
-    const dialogRef = this.dialog.open(AfiliadoFormularioComponent, {
+  public editar(idAgente) {
+    const dialogRef = this.dialog.open(AgenteFormularioComponent, {
       data: {
-        idAfiliado
+        idAgente
       }
     });
 
@@ -56,17 +56,17 @@ export class AfiliadoComponent implements OnInit {
   }
 
   
-  public eliminar(idAfiliado) {
+  public eliminar(idAgente) {
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
       data: {
-        titulo: 'Dar de baja afiliado',
+        titulo: 'Dar de baja agente',
         mensaje: '¿Esta seguro que desea realizar esta acción?'
       }
     });
 
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        const resultado = await this.service.delete(idAfiliado).toPromise();
+        const resultado = await this.service.delete(idAgente).toPromise();
         this.mensajeService.generarToastr(resultado.exito, '', resultado.mensaje);
         this.lista.cargarLista();
       }
@@ -74,7 +74,7 @@ export class AfiliadoComponent implements OnInit {
   }
 
   nuevo() {
-    const dialogRef = this.dialog.open(AfiliadoFormularioComponent, {
+    const dialogRef = this.dialog.open(AgenteFormularioComponent, {
       data: {}
     });
 
