@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>{{accion}} afiliado al agente:</h1>
+
+<form [formGroup]="asignarForm" autocomplete="off" focusInvalidInput (ngSubmit)="onSubmit(asignarForm.value)">
+    <div mat-dialog-content class="divform1">
+
+        <mat-form-field class="input-busqueda-lista" mat-form-field>
+            <input #txtBusqueda matInput placeholder="Buscar">
+        </mat-form-field>
+        <mat-form-field >
+            <mat-table [dataSource]="dataSource" matSort matSortDirection="asc" matSortDisableClear>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+
+                <ng-container matColumnDef="idAfiliado">
+                    <mat-header-cell mat-sort-header *matHeaderCellDef> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let afiliado" data-label="No:"> {{afiliado.idAfiliado}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nombreAfiliado">
+                    <mat-header-cell mat-sort-header *matHeaderCellDef> Nombre </mat-header-cell>
+                    <mat-cell *matCellDef="let afiliado" data-label="Nombre:"> {{afiliado.nombreAfiliado}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="apellidoAfiliado">
+                    <mat-header-cell mat-sort-header *matHeaderCellDef> Apellido </mat-header-cell>
+                    <mat-cell *matCellDef="let afiliado" data-label="Apellido:"> {{afiliado.apellidoAfiliado}}
+                    </mat-cell>
+                </ng-container>
+            </mat-table>
+        </mat-form-field>
+        <!-- <div fxLayout="column">
+            <h2>My Heroes</h2>
+            <ul class="heroes">
+              <li *ngFor="let hero of heroes">
+                <span class="badge">{{hero.id}}</span> {{hero.name}}
+              </li>
+            </ul>
+        </div> -->
+
+    </div>
+
+    <div mat-dialog-actions>
+        <button type="button" (click)="closeDialog()" mat-button>Cerrar</button>
+        <button type="submit" mat-button cdkFocusInitial>Guardar</button>
+    </div>
+</form>

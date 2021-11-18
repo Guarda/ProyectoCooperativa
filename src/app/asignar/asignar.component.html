@@ -4,7 +4,7 @@
 <div class="contenedor">
     <mat-toolbar class="toolbar-lista">
         <mat-toolbar-row>
-            <span> Afiliados </span>
+            <span> Afiliados que no tienen asignado agente </span>
             <span class="spacer"></span>
 
             <mat-form-field class="input-busqueda-lista" mat-form-field>
@@ -19,14 +19,16 @@
     </mat-toolbar>
 
 
-    <app-afiliado-lista (editarEmitter)="editar($event)"
-        (promoverEmitter)="promover($event)"
-        (eliminarEmitter)="eliminar($event)">
-    </app-afiliado-lista>
-  
+    <app-asignar-lista (asignarEmitter)="asignar($event)">
+    </app-asignar-lista>
+
+    <!-- <app-asignar-lista (editarEmitter)="editar($event)" 
+    (asignarEmitter)="asignar($event)" (eliminarEmitter)="eliminar($event)">
+    </app-asignar-lista> -->
+
 
 </div>
 
-<button (click)="nuevo()" class="fab-fixed" mat-fab color="primary">
+<!-- <button (click)="nuevo()" class="fab-fixed" mat-fab color="primary">
     <mat-icon>add</mat-icon>
-</button>
+</button> -->

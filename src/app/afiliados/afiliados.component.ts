@@ -6,6 +6,7 @@ import { ConfirmacionComponent } from '../@core/confirmacion/confirmacion.compon
 import { AfiliadoService } from '../services/afiliado.service';
 import { MensajeService } from '../services/mensaje.service';
 import { AfiliadoFormularioComponent } from './afiliado-formulario/afiliado-formulario.component';
+import { AfiliadoAgenteFormularioComponent } from './afiliado-agente-formulario/afiliado-agente-formulario.component'
 import { AfiliadoListaComponent } from './afiliado-lista/afiliado-lista.component';
 import { AfiliadoAñadirFormularioComponent } from './afiliado-añadir-formulario/afiliado-añadir-formulario.component';
 
@@ -46,7 +47,21 @@ export class AfiliadoComponent implements OnInit {
   }
 
   public editar(idAfiliado) {
+    console.log("editar");
     const dialogRef = this.dialog.open(AfiliadoFormularioComponent, {
+      data: {
+        idAfiliado
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.lista.cargarLista();
+    });
+  }
+
+  public promover(idAfiliado) {
+    console.log("promover");
+    const dialogRef = this.dialog.open(AfiliadoAgenteFormularioComponent, {
       data: {
         idAfiliado
       }

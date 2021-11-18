@@ -18,16 +18,16 @@
         <div class="login-form-div">
             <mat-icon>perm_identity</mat-icon>
         </div>
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="autenticacionForm" (ngSubmit)="onSubmit(autenticacionForm.value)">
             <mat-card-content class="login-form-content">
                 <mat-form-field appearance="standard">
                     <mat-label>Nombre de usuario</mat-label>
-                    <input matInput placeholder="Ingrese nombre de usuario" [formControl]="nombreUsuarioControl">
+                    <input matInput placeholder="Ingrese nombre de usuario" formControlName="NombreUsuario">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="Ingrese su contraseña" [formControl]="contrasenaUsuarioControl">
+                    <input matInput placeholder="Ingrese su contraseña" formControlName="Contraseña">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
             </mat-card-content>

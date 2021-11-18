@@ -35,17 +35,17 @@
             <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
             <mat-cell *matCellDef="let afiliado">
 
-                <button mat-icon-button (click)="promover(afiliado.idAfiliado)">
-                    <mat-icon>verified_user</mat-icon>
+                <button mat-icon-button (click)="asignar(afiliado.idAfiliado)">
+                    <mat-icon>group_add</mat-icon>
                 </button>
 
-                <button mat-icon-button (click)="editar(afiliado.idAfiliado)">
+                <!-- <button mat-icon-button (click)="editar(afiliado.idAfiliado)">
                     <mat-icon>edit</mat-icon>
                 </button>
 
                 <button mat-icon-button (click)="eliminar(afiliado.idAfiliado)">
                     <mat-icon>delete</mat-icon>
-                </button>
+                </button> -->
 
             </mat-cell>
         </ng-container>

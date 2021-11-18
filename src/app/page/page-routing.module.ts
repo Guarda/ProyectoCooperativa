@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AfiliadoComponent } from '../afiliados/afiliados.component';
 import { AgenteComponent } from '../agente/agente.component';
+import { AsignarComponent } from '../asignar/asignar.component';
 import { ServicioComponent } from '../servicios/servicio.component';
 import { PageComponent } from './page.component';
 
@@ -28,6 +29,12 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'agente',
+        pathMatch: 'full'
+      },
+      { path: 'asignar', component: AsignarComponent },
+      {
+        path: '',
+        redirectTo: 'asignar',
         pathMatch: 'full'
       },
     ],
