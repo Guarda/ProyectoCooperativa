@@ -28,25 +28,25 @@ export class SideNavComponent implements OnDestroy, OnInit, AfterViewInit {
       "icono": "supervised_user_circle",
       "listaHijo": [
         {
-          "url": "/afiliados",
+          "url": "/page/afiliados",
           "nombre": "Listar todos los afiliados",
           "permiso": "ACCEDER_ROL",
           "icono": "supervisor_account"
         },
         {
-          "url": "/agente",
+          "url": "/page/agente",
           "nombre": "Listar todos los Agentes",
           "permiso": "ACCEDER_USUARIO",
           "icono": "verified_user"
         },
         {
-          "url": "/Sistema/Usuario",
+          "url": "/page/asignar",
           "nombre": "Afiliados que no tienen asignado agente",
           "permiso": "ACCEDER_USUARIO",
           "icono": "person_pin_circle"
         },
         {
-          "url": "/Sistema/Usuario",
+          "url": "/page/cartera",
           "nombre": "Listar Carteras de agentes",
           "permiso": "ACCEDER_USUARIO",
           "icono": "attach_money"

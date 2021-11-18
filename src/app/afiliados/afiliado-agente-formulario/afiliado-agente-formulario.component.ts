@@ -8,11 +8,11 @@ import { FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors
 import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-afiliado-formulario',
-  templateUrl: './afiliado-formulario.component.html',
-  styleUrls: ['./afiliado-formulario.component.scss']
+  selector: 'app-afiliado-agente-formulario',
+  templateUrl: './afiliado-agente-formulario.component.html',
+  styleUrls: ['./afiliado-agente-formulario.component.scss']
 })
-export class AfiliadoFormularioComponent {
+export class AfiliadoAgenteFormularioComponent {
   public accion: string
   public listaEstadoAfiliado: any;
   public listaAfiliado: any;
@@ -23,7 +23,7 @@ export class AfiliadoFormularioComponent {
   public listaModulo: any;
 
   constructor(
-    public dialogRef: MatDialogRef<AfiliadoFormularioComponent>,
+    public dialogRef: MatDialogRef<AfiliadoAgenteFormularioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private service: AfiliadoService,
     private formBuilder: FormBuilder,
@@ -130,6 +130,7 @@ export class AfiliadoFormularioComponent {
       FechaContrato: [
         null,
         Validators.compose([
+          Validators.required,
         ]),
       ],
     });
@@ -147,7 +148,7 @@ export class AfiliadoFormularioComponent {
   }
 
   private async obtenerAfiliado() {
-    this.accion = 'Editar';
+    this.accion = 'Promover';
     // comprobar que traiga datos
     const resultado = await this.service.getById(this.idAfiliado).toPromise();
     console.log(resultado);   
@@ -209,10 +210,8 @@ export class AfiliadoFormularioComponent {
 
       let resultado;
 
-      if (!this.idAfiliado){
+      if (!this.idAfiliado)
         resultado = await this.service.post(modAfiliado).toPromise();
-        console.log("llego1");
-      }  
       else {
         resultado = await this.service.put(modAfiliado).toPromise();
       }

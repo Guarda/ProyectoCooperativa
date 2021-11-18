@@ -63,76 +63,17 @@ export class AgenteFormularioComponent {
           Validators.maxLength(300),
         ]),
       ],
-      IdReferente: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      Celular: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      TelefonoDomicilio: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      CorreoElectronico: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      Cedula: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      Direccion1: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      Direccion2: [
+      FechaContrato: [
         null,
         Validators.compose([
         ]),
-      ],
-      FechaInscripcion: [
-        null,
-        Validators.compose([
-        ]),
-      ],
+      ],     
       IdEstado: [
         null,
         Validators.compose([
           Validators.required,
         ]),
-      ],
-      IdCargo: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      NombreUsuario: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
-      Contraseña: [
-        null,
-        Validators.compose([
-          Validators.required,
-        ]),
-      ],
+      ],      
     });
 
     this.obtenerInformacion();
@@ -151,24 +92,16 @@ export class AgenteFormularioComponent {
     this.accion = 'Editar';
     // comprobar que traiga datos
     const resultado = await this.service.getById(this.idAgente).toPromise();
-    console.log(resultado);   
+    console.log(resultado);
     // Mapeas con los nombres de tu formulario
     this.agenteForm.patchValue({
-      IdAgente : this.idAgente,
+      IdAfiliado: resultado.dato.idAfiliado,
+      IdAgente: this.idAgente,
       NombreAgente: resultado.dato.nombreAgente,
       ApellidoAgente: resultado.dato.apellidoAgente,
-      IdReferente: resultado.dato.idReferente,
-      Celular: resultado.dato.celular,
-      TelefonoDomicilio: resultado.dato.telefonoDomicilio,
-      CorreoElectronico: resultado.dato.correoElectronico,
-      Cedula: resultado.dato.cedula,
-      Direccion1: resultado.dato.direccion1,
-      Direccion2: resultado.dato.direccion2,
-      FechaInscripcion : resultado.dato.fechaInscripcion,
-      IdEstado : resultado.dato.idEstado,
-      IdCargo : resultado.dato.idCargo,
-      NombreUsuario : resultado.dato.nombreUsuario,
-      Contraseña : resultado.dato.contraseña
+      FechaContrato: resultado.dato.fechaContrato,          
+      IdEstado: resultado.dato.idEstado
+         
     });
 
     this.agenteForm.enable();
@@ -181,35 +114,29 @@ export class AgenteFormularioComponent {
   async onSubmit(formulario) {
 
     console.log(formulario);
-
+    console.log(this.agenteForm)
     if (this.agenteForm.valid && this.agenteForm.enabled) {
 
       this.agenteForm.disable();
-
+      console.log("enviado 1")
 
       // Se crea un modelo por si quiere hacerse algun cambio
       const modAgente = {
+        IdAfiliado: formulario.IdAfiliado,
         IdAgente: formulario.IdAgente,
         NombreAgente: formulario.NombreAgente,
         ApellidoAgente: formulario.ApellidoAgente,
-        IdReferente: formulario.IdReferente,
-        Celular: formulario.Celular,
-        TelefonoDomicilio: formulario.TelefonoDomicilio,
-        CorreoElectronico: formulario.CorreoElectronico,
-        Cedula: formulario.Cedula,
-        Direccion1: formulario.Direccion1,
-        Direccion2: formulario.Direccion2,
-        FechaInscripcion : formulario.FechaInscripcion,
-        IdEstado : formulario.IdEstado,
-        IdCargo : formulario.IdCargo,
-        NombreUsuario : formulario.NombreUsuario,
-        Contraseña : formulario.Contraseña
+        FechaContrato: formulario.FechaContrato,              
+        IdEstado: formulario.IdEstado
+        
       };
 
       let resultado;
 
-      if (!this.idAgente)
+      if (!this.idAgente){
         resultado = await this.service.post(modAgente).toPromise();
+        console.log("enviado");
+      }
       else {
         resultado = await this.service.put(modAgente).toPromise();
       }
