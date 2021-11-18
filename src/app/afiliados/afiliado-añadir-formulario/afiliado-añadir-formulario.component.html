@@ -1,0 +1,157 @@
+<h1 mat-dialog-title>{{accion}} afiliado</h1>
+
+<form [formGroup]="afiliadoForm" autocomplete="off" focusInvalidInput (ngSubmit)="onSubmit(afiliadoForm.value)">
+    <div mat-dialog-content>
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="NombreAfiliado" matInput placeholder="Nombre del afiliado (*)" cdkFocusInitial>
+
+                <mat-error *ngIf="afiliadoForm.controls['NombreAfiliado'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['NombreAfiliado'])}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="ApellidoAfiliado" matInput placeholder="Apellido del afiliado (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['ApellidoAfiliado'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['ApellidoAfiliado'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="IdReferente" matInput placeholder="Referente (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['IdReferente'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['IdReferente'])}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="Celular" matInput placeholder="Celular (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['Celular'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['Celular'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="TelefonoDomicilio" matInput placeholder="Telefono del domicilio (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['TelefonoDomicilio'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['TelefonoDomicilio'])}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="CorreoElectronico" matInput placeholder="Correo electronico (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['CorreoElectronico'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['CorreoElectronico'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="Cedula" matInput placeholder="Cedula (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['Cedula'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['Cedula'])}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="Direccion1" matInput placeholder="Direccion 1 (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['Direccion1'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['Direccion1'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="Direccion2" matInput placeholder="Direccion 2 (*)">
+                <mat-error *ngIf="afiliadoForm.controls['Direccion2'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['Direccion2'])}}
+                </mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field>
+                <input formControlName="FechaInscripcion" matInput placeholder="Fecha de inscripcion (*)">
+                <mat-error *ngIf="afiliadoForm.controls['FechaInscripcion'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['FechaInscripcion'])}}
+                </mat-error>
+            </mat-form-field>  -->
+            <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Escoja una fecha</mat-label>
+                <input matInput [matDatepicker]="datepicker" formControlName="FechaInscripcion" matInput placeholder="Fecha de inscripcion (*)">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input formControlName="NombreUsuario" matInput placeholder="Nombre de usuario (*)">
+                <mat-error *ngIf="afiliadoForm.controls['NombreUsuario'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['NombreUsuario'])}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="Contraseña" matInput placeholder="Contraseña (*)">
+                <mat-error *ngIf="afiliadoForm.controls['Contraseña'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['Contraseña'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+     
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="IdEstado">
+                    <mat-option [value]="0">Inactivo</mat-option>
+                    <mat-option [value]="1">Activo</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="afiliadoForm.controls['IdEstado'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['IdEstado'])}}
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field>
+                <input formControlName="IdCargo" matInput placeholder="Cargo (*)">
+
+                <mat-error *ngIf="afiliadoForm.controls['IdCargo'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['IdCargo'])}}
+                </mat-error>
+            </mat-form-field> -->
+
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="IdCargo">
+                    <mat-option [value]="1">Administrador</mat-option>
+                    <mat-option [value]="2">Agente</mat-option>
+                    <mat-option [value]="3">Afiliado</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="afiliadoForm.controls['IdCargo'].invalid">
+                    {{obtenerMensajeError(afiliadoForm.controls['IdCargo'])}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button type="button" (click)="closeDialog()" mat-button>Cerrar</button>
+        <button type="submit" mat-button cdkFocusInitial>Guardar</button>
+    </div>
+</form>

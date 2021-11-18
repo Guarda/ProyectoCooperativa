@@ -20,6 +20,7 @@ import { PageComponent } from './page/page.component';
 import { PageModule } from './page/page.module';
 import { AfiliadoListaComponent } from './afiliados/afiliado-lista/afiliado-lista.component';
 import { AfiliadoFormularioComponent } from './afiliados/afiliado-formulario/afiliado-formulario.component';
+import { AfiliadoAñadirFormularioComponent } from './afiliados/afiliado-añadir-formulario/afiliado-añadir-formulario.component';
 import { ServicioComponent } from './servicios/servicio.component';
 import { ServicioFormularioComponent } from './servicios/servicio-formulario/servicio-formulario.component';
 import { ServicioListaComponent } from './servicios/servicio-lista/servicio-lista.component';
@@ -48,7 +49,8 @@ import { AgenteListaComponent } from './agente/agente-lista/agente-lista.compone
     AgenteComponent,
     AgenteFormularioComponent,
     AgenteListaComponent,
-    AgenteContratoFormularioComponent
+    AgenteContratoFormularioComponent,
+    AfiliadoAñadirFormularioComponent
   ],
   imports: [
     BrowserModule,

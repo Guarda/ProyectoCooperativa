@@ -7,6 +7,7 @@ import { AfiliadoService } from '../services/afiliado.service';
 import { MensajeService } from '../services/mensaje.service';
 import { AfiliadoFormularioComponent } from './afiliado-formulario/afiliado-formulario.component';
 import { AfiliadoListaComponent } from './afiliado-lista/afiliado-lista.component';
+import { AfiliadoAñadirFormularioComponent } from './afiliado-añadir-formulario/afiliado-añadir-formulario.component';
 
 @Component({
   selector: 'app-afiliados',
@@ -17,6 +18,7 @@ export class AfiliadoComponent implements OnInit {
 
   public cargandoLista: Boolean;
 
+  @ViewChild(AfiliadoAñadirFormularioComponent, {static: false}) lista1: AfiliadoListaComponent;
   @ViewChild(AfiliadoListaComponent, { static: false }) lista: AfiliadoListaComponent;
   @ViewChild('txtBusqueda', { static: true }) input: ElementRef;
 
